@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buyza · eComm</title>
+  <!-- Font Awesome (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #fafafa;
+      color: #1e1e2a;
+    }
+
+    /* ---- header / navbar ---- */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5%;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(4px);
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(145deg, #0b1e33, #2b4b6f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .logo i {
+      color: #2b4b6f;
+      font-size: 2rem;
+      background: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #1e2b39;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: #0f2b44;
+      border-bottom: 2px solid #2b4b6f;
+      padding-bottom: 4px;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 1.2rem;
+      color: #1e2b39;
+    }
+    .nav-icons i {
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .nav-icons i:hover {
+      color: #2b4b6f;
+      transform: scale(1.05);
+    }
+
+    /* ---- hero / main banner ---- */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 5% 2rem;
+      background: linear-gradient(135deg, #f2f6fc 0%, #ffffff 100%);
+      border-bottom: 1px solid #eaeef3;
+    }
+
+    .hero-text {
+      flex: 1 1 320px;
+    }
+    .hero-text h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #0b1f30;
+    }
+    .hero-text h1 span {
+      background: linear-gradient(135deg, #1f4b6e, #15405e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      margin: 1.2rem 0 1.8rem;
+      color: #3a4c5e;
+      max-width: 460px;
+    }
+    .cta-btn {
+      background: #1e3b54;
+      color: white;
+      border: none;
+      padding: 0.9rem 2.8rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 8px 18px rgba(26, 57, 87, 0.15);
+      display: inline-block;
+    }
+    .cta-btn:hover {
+      background: #12324a;
+      transform: scale(1.02);
+      box-shadow: 0 12px 24px rgba(18, 48, 76, 0.2);
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    .hero-image img {
+      max-width: 100%;
+      width: 420px;
+      height: auto;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px -12px rgba(0,20,40,0.25);
+      transition: 0.25s;
+      object-fit: cover;
+    }
+    .hero-image img:hover {
+      transform: scale(1.01);
+    }
+
+    /* ---- categories ---- */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      padding: 2.5rem 5% 0.8rem;
+      color: #162433;
+      letter-spacing: -0.3px;
+    }
+    .section-title i {
+      color: #2b4b6f;
+      margin-right: 10px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.5rem;
+      padding: 1.5rem 5% 2rem;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 40px 16px 16px 40px;
+      padding: 0.8rem 1.2rem 0.8rem 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #eef2f6;
+      transition: 0.2s;
+      cursor: default;
+    }
+    .category-card:hover {
+      border-color: #b6cedf;
+      box-shadow: 0 8px 16px rgba(28, 63, 93, 0.06);
+      transform: translateY(-4px);
+    }
+    .category-card img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #e9f0f7;
+      border: 2px solid white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .category-card span {
+      font-weight: 500;
+      color: #1b3347;
+    }
+
+    /* ---- featured products (images) ---- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem;
+      padding: 1.2rem 5% 3.5rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.2rem 0.8rem 1.2rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+      border: 1px solid #f0f4f9;
+      transition: 0.2s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .product-card:hover {
+      border-color: #c7dae9;
+      box-shadow: 0 16px 28px -8px rgba(28, 63, 93, 0.08);
+      transform: scale(1.01);
+    }
+    .product-card img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      border-radius: 24px;
+      background: #f3f8fe;
+      transition: 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .product-card img:hover {
+      filter: brightness(0.97);
+    }
+    .product-card h4 {
+      margin-top: 0.8rem;
+      font-weight: 600;
+      color: #1c3142;
+      font-size: 1rem;
+    }
+    .product-card .price {
+      font-weight: 600;
+      color: #1f4b6b;
+      margin-top: 0.3rem;
+      letter-spacing: 0.3px;
+    }
+    .product-card .rating {
+      color: #f5b342;
+      font-size: 0.85rem;
+      margin: 0.3rem 0 0.4rem;
+    }
+
+    /* ---- extra images row (different images) ---- */
+    .banner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      padding: 0.5rem 5% 3rem;
+    }
+    .banner-item {
+      background: #f2f8ff;
+      border-radius: 40px 12px 12px 40px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      border: 1px solid #e2ecf5;
+    }
+    .banner-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 6px 10px 6px 6px;
+      border: 3px solid white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .banner-item .banner-text {
+      font-weight: 500;
+      color: #1a3144;
+      font-size: 0.95rem;
+      padding-right: 10px;
+    }
+    .banner-item .banner-text small {
+      display: block;
+      font-weight: 400;
+      color: #47647c;
+      font-size: 0.8rem;
+      margin-top: 2px;
+    }
+
+    /* ---- footer ---- */
+    .footer {
+      background: #0f1f2e;
+      color: #d7e2ed;
+      padding: 2.5rem 5% 1.5rem;
+      margin-top: 1.2rem;
+      border-radius: 50px 50px 0 0;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .footer h4 {
+      color: white;
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+    .footer p, .footer a {
+      color: #b6cbdf;
+      text-decoration: none;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .footer i {
+      margin-right: 8px;
+      color: #a0bdd6;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #254356;
+      margin-top: 2rem;
+      padding-top: 1.2rem;
+      text-align: center;
+      color: #93aec9;
+      font-size: 0.9rem;
+    }
+
+    /* ---- responsive tweaks ---- */
+    @media (max-width: 780px) {
+      .navbar {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+      .hero-image img {
+        width: 100%;
+        max-width: 340px;
+      }
+    }
+    @media (max-width: 480px) {
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .product-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .banner-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTV0NLN2X5"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-NTV0NLN2X5');
+</script>
+</head>
+<body>
+  <!-- header -->
+  <header class="navbar">
+    <div class="logo">
+      <i class="fas fa-store-alt"></i> Buyza
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+    </div>
+    <div class="nav-icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-shopping-bag"></i>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Level up your <span>style</span> &amp; <span>comfort</span></h1>
+      <p>Discover premium picks curated for your everyday vibe. Fresh drops, timeless classics.</p>
+      <a class="cta-btn"><i class="fas fa-arrow-right" style="margin-right: 10px;"></i>Explore now</a>
+    </div>
+    <div class="hero-image">
+      <!-- hero image (different) -->
+      <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&auto=format&fit=crop" alt="hero fashion">
+    </div>
+  </section>
+
+  <!-- categories with images -->
+  <h2 class="section-title"><i class="fas fa-th-large"></i> Shop by category</h2>
+  <div class="category-grid">
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=100&h=100&fit=crop&auto=format" alt="men">
+      <span>Men</span>
+    </div>
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=100&h=100&fit=crop&auto=format" alt="women">
+      <span>Women</span>
+    </div>
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100&h=100&fit=crop&auto=format" alt="shoes">
+      <span>Footwear</span>
+    </div>
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=100&h=100&fit=crop&auto=format" alt="accessories">
+      <span>Accessories</span>
+    </div>
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=100&h=100&fit=crop&auto=format" alt="kids">
+      <span>Kids</span>
+    </div>
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=100&h=100&fit=crop&auto=format" alt="sport">
+      <span>Sport</span>
+    </div>
+  </div>
+
+  <!-- featured products (many different images) -->
+  <h2 class="section-title"><i class="fas fa-star"></i> Featured picks</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=300&h=200&fit=crop&auto=format" alt="jacket">
+      <h4>Urban jacket</h4>
+      <div class="price">$89.00</div>
+      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=300&h=200&fit=crop&auto=format" alt="sneakers">
+      <h4>Air sneakers</h4>
+      <div class="price">$124.00</div>
+      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300&h=200&fit=crop&auto=format" alt="backpack">
+      <h4>Voyage backpack</h4>
+      <div class="price">$54.00</div>
+      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&h=200&fit=crop&auto=format" alt="coat">
+      <h4>Wool coat</h4>
+      <div class="price">$149.00</div>
+      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=200&fit=crop&auto=format" alt="red shoes">
+      <h4>Red hi-tops</h4>
+      <div class="price">$99.00</div>
+      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=300&h=200&fit=crop&auto=format" alt="leather bag">
+      <h4>Leather crossbody</h4>
+      <div class="price">$78.00</div>
+      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+    </div>
+  </div>
+
+  <!-- extra row: different images with text (more variety) -->
+  <h2 class="section-title"><i class="fas fa-images"></i> curated looks</h2>
+  <div class="banner-grid">
+    <div class="banner-item">
+      <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=100&h=100&fit=crop&auto=format" alt="look1">
+      <div class="banner-text">spring edit <small>fresh colors</small></div>
+    </div>
+    <div class="banner-item">
+      <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=100&h=100&fit=crop&auto=format" alt="look2">
+      <div class="banner-text">urban utility <small>streetwear</small></div>
+    </div>
+    <div class="banner-item">
+      <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=100&h=100&fit=crop&auto=format" alt="look3">
+      <div class="banner-text">kids zone <small>playful</small></div>
+    </div>
+    <div class="banner-item">
+      <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=100&h=100&fit=crop&auto=format" alt="look4">
+      <div class="banner-text">active wear <small>performance</small></div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div>
+        
+      <div>
+        <h4>Follow</h4>
+        <p><i class="fab fa-instagram"></i> <a href="#">Instagram</a></p>
+        <p><i class="fab fa-twitter"></i> <a href="#">Twitter</a></p>
+        <p><i class="fab fa-youtube"></i> <a href="#">YouTube</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Buyza. All rights reserved. &nbsp;|&nbsp; Made with <i class="fas fa-heart" style="color: #d46b7a;"></i>
+    </div>
+  </footer>
+</body>
+</html>

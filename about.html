@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buyza · About Us</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #1a2634;
+    }
+
+    /* ===== navbar (consistent) ===== */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid #e9eef3;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(145deg, #0b1e33, #2b4b6f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .logo i {
+      color: #2b4b6f;
+      font-size: 2rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #1e2b39;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: #0f2b44;
+      border-bottom: 2px solid #2b4b6f;
+      padding-bottom: 4px;
+    }
+    .nav-icons {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 1.2rem;
+      color: #1e2b39;
+    }
+    .nav-icons i {
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .nav-icons i:hover {
+      color: #2b4b6f;
+      transform: scale(1.05);
+    }
+
+    /* ===== about page main ===== */
+    .about-container {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      padding: 0 5% 3rem;
+    }
+
+    .about-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 1.8rem;
+    }
+    .about-header i {
+      font-size: 2.5rem;
+      color: #1f4b6e;
+      background: #e2ebf5;
+      padding: 14px;
+      border-radius: 50%;
+    }
+    .about-header h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #0b1f30;
+      letter-spacing: -0.5px;
+    }
+    .about-header h1 small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #4d6a83;
+      margin-left: 12px;
+    }
+
+    .about-card {
+      background: white;
+      border-radius: 36px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 12px 32px -8px rgba(18, 40, 60, 0.06);
+      border: 1px solid #eef3f9;
+    }
+
+    .about-card h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #142b3f;
+      margin: 2rem 0 0.8rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .about-card h2 i {
+      color: #2b4b6f;
+      font-size: 1.4rem;
+      width: 2rem;
+    }
+    .about-card h2:first-of-type {
+      margin-top: 0.2rem;
+    }
+
+    .about-card p {
+      color: #2c4054;
+      line-height: 1.7;
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+      padding-left: 0.2rem;
+    }
+    .about-card ul {
+      padding-left: 2.4rem;
+      margin: 0.6rem 0 1.4rem 0;
+      color: #2c4054;
+      line-height: 1.8;
+    }
+    .about-card li {
+      margin-bottom: 0.4rem;
+    }
+
+    .about-divider {
+      height: 2px;
+      background: linear-gradient(90deg, #d6e3ef, #b0c9dd, #d6e3ef);
+      margin: 2rem 0 1.5rem;
+      border: 0;
+    }
+
+    /* team grid with images */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .team-member {
+      text-align: center;
+    }
+    .team-member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+      transition: 0.2s;
+      background: #e9f0f7;
+    }
+    .team-member img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 28px rgba(26, 57, 87, 0.08);
+    }
+    .team-member h4 {
+      margin-top: 0.6rem;
+      font-weight: 600;
+      color: #142b3f;
+      font-size: 1rem;
+    }
+    .team-member p {
+      font-size: 0.85rem;
+      color: #4d6a83;
+      margin: 0;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 2rem;
+      background: #eef4fa;
+      padding: 0.7rem 2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #1a3144;
+      border: 1px solid #d5e2ef;
+      transition: 0.2s;
+    }
+    .back-link:hover {
+      background: #dfeaf5;
+      border-color: #b1cbdf;
+      transform: translateX(-4px);
+    }
+
+    .values-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2.5rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .values-list span {
+      background: #f2f7fd;
+      padding: 0.4rem 1.4rem;
+      border-radius: 60px;
+      font-weight: 500;
+      color: #1a3a55;
+      border: 1px solid #deeaf5;
+    }
+    .values-list i {
+      color: #1f4b6e;
+      margin-right: 6px;
+    }
+
+    /* ===== footer ===== */
+    .footer {
+      background: #0f1f2e;
+      color: #d7e2ed;
+      padding: 2.5rem 5% 1.5rem;
+      margin-top: 2rem;
+      border-radius: 50px 50px 0 0;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .footer h4 {
+      color: white;
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+    .footer p, .footer a {
+      color: #b6cbdf;
+      text-decoration: none;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .footer i {
+      margin-right: 8px;
+      color: #a0bdd6;
+    }
+    .footer-bottom {
+      border-top: 1px solid #254356;
+      margin-top: 2rem;
+      padding-top: 1.2rem;
+      text-align: center;
+      color: #93aec9;
+      font-size: 0.9rem;
+    }
+
+    /* ===== responsive ===== */
+    @media (max-width: 780px) {
+      .navbar {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+      .about-card {
+        padding: 1.8rem 1.5rem;
+      }
+      .about-header h1 {
+        font-size: 2rem;
+      }
+      .about-header h1 small {
+        display: block;
+        margin-left: 0;
+        margin-top: 4px;
+      }
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .about-card {
+        padding: 1.2rem;
+      }
+      .about-card h2 {
+        font-size: 1.3rem;
+      }
+      .team-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .team-member img {
+        width: 90px;
+        height: 90px;
+      }
+      .values-list {
+        gap: 0.8rem;
+      }
+      .back-link {
+        padding: 0.5rem 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== navbar ===== -->
+  <header class="navbar">
+    <div class="logo">
+      <i class="fas fa-store-alt"></i> Buyza
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+    </div>
+    <div class="nav-icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-shopping-bag"></i>
+    </div>
+  </header>
+
+  <!-- ===== about main content ===== -->
+  <div class="about-container">
+    <div class="about-header">
+      <i class="fas fa-people-group"></i>
+      <h1>About Buyza <small>curated with care since 2020</small></h1>
+    </div>
+
+    <div class="about-card">
+      <!-- intro -->
+      <p style="font-size: 1.1rem; font-weight: 500; color: #0b263b;">
+        <i class="fas fa-sparkles" style="color: #1f4b6e; margin-right: 8px;"></i>
+        We believe style is a form of expression — and everyone deserves to feel great in what they wear.
+      </p>
+      <div class="about-divider"></div>
+
+      <!-- story -->
+      <h2><i class="fas fa-book-open"></i> Our Story</h2>
+      <p>
+        Buyza was born in 2020 from a simple idea: <strong>make high-quality, trend-forward fashion accessible to everyone.</strong> 
+        What started as a small pop‑up in San Francisco has grown into a global community of style seekers who value 
+        authenticity, comfort, and timeless design.
+      </p>
+      <p>
+        We work directly with ethical manufacturers and independent designers to bring you pieces that tell a story — 
+        whether it’s a hand‑woven textile, a recycled‑fabric sneaker, or a tailored jacket made to last for years.
+      </p>
+
+      <!-- mission + values -->
+      <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
+      <p>
+        To empower you to express your unique identity through clothing and accessories, while championing 
+        sustainability, inclusivity, and craftsmanship. We’re here to make shopping feel personal, responsible, and 
+        joyful.
+      </p>
+
+      <div class="values-list">
+        <span><i class="fas fa-leaf"></i> Sustainable</span>
+        <span><i class="fas fa-hand-holding-heart"></i> Ethical</span>
+        <span><i class="fas fa-palette"></i> Creative</span>
+        <span><i class="fas fa-users"></i> Inclusive</span>
+        <span><i class="fas fa-gem"></i> Quality</span>
+      </div>
+
+      <!-- team section with different images -->
+      <h2><i class="fas fa-user-group"></i> Meet the Team</h2>
+      <p>
+        We’re a diverse group of dreamers, makers, and problem‑solvers. From our buyers to our creatives, 
+        every person at Buyza shares a passion for good design and better commerce.
+      </p>
+
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&auto=format" alt="founder" />
+          <h4>Marcus Chen</h4>
+          <p>Founder &amp; CEO</p>
+        </div>
+        <div class="team-member">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&auto=format" alt="creative director" />
+          <h4>Elena Rivera</h4>
+          <p>Creative Director</p>
+        </div>
+        <div class="team-member">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&auto=format" alt="operations" />
+          <h4>James Okafor</h4>
+          <p>Operations Lead</p>
+        </div>
+        <div class="team-member">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&auto=format" alt="customer experience" />
+          <h4>Priya Sharma</h4>
+          <p>Customer Experience</p>
+        </div>
+      </div>
+
+      <!-- sustainability -->
+      <h2><i class="fas fa-seedling"></i> Sustainability &amp; Impact</h2>
+      <p>
+        We’re committed to reducing our environmental footprint. That’s why we:
+      </p>
+      <ul>
+        <li>Use recycled and eco‑friendly packaging for every order.</li>
+        <li>Partner with factories that follow fair‑labor practices.</li>
+        <li>Offset our carbon emissions through reforestation projects.</li>
+        <li>Design timeless pieces that transcend fast‑fashion trends.</li>
+      </ul>
+      <p>
+        We also donate 1% of every sale to organizations that support underprivileged communities through education 
+        and the arts.
+      </p>
+
+      <!-- community -->
+      <h2><i class="fas fa-heart"></i> Community First</h2>
+      <p>
+        Buyza isn’t just a store — it’s a gathering place for people who love fashion with purpose. We host 
+        local pop‑ups, collaborate with emerging artists, and regularly feature customer stories on our blog.
+      </p>
+      <p>
+        <span class="highlight" style="background:#f2f7fd; padding:0.4rem 1.6rem; border-radius:60px; display:inline-block; border:1px solid #deeaf5;">
+          <i class="fas fa-hashtag"></i> #BuyzaCommunity
+        </span>
+      </p>
+
+      <div class="about-divider"></div>
+      <p style="font-style: italic; color: #1a3a55;">
+        <i class="fas fa-quote-left" style="color: #1f4b6e; margin-right: 6px;"></i>
+        We’re here to help you look good, feel good, and do good — every step of the way.
+      </p>
+
+      <!-- back link -->
+      <a href="#" class="back-link"><i class="fas fa-arrow-left"></i> Back to homepage</a>
+    </div>
+  </div>
+
+  <!-- ===== footer ===== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div>
+        
+      <div>
+        <h4>Follow</h4>
+        <p><i class="fab fa-instagram"></i> <a href="#">Instagram</a></p>
+        <p><i class="fab fa-twitter"></i> <a href="#">Twitter</a></p>
+        <p><i class="fab fa-youtube"></i> <a href="#">YouTube</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Buyza. All rights reserved. &nbsp;|&nbsp; Made with <i class="fas fa-heart" style="color: #d46b7a;"></i>
+    </div>
+  </footer>
+</body>
+</html>
